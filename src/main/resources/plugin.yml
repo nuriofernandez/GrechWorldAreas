@@ -1,0 +1,9 @@
+main: me.nurio.minecraft.grechportals.GrechPortals
+name: GrechPortals
+version: '1.0'
+api-version: 1.16
+description: Minecraft portals system
+load: POSTWORLD
+author: Nurio
+website: nurio.me
+prefix: GrechPortals
