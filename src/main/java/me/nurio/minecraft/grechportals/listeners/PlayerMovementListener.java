@@ -3,6 +3,7 @@ package me.nurio.minecraft.grechportals.listeners;
 import me.nurio.minecraft.grechportals.GrechPortals;
 import me.nurio.minecraft.grechportals.events.PlayerJoinPortalEvent;
 import me.nurio.minecraft.grechportals.portals.GPortal;
+import me.nurio.minecraft.grechportals.portals.PortalFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -15,6 +16,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
  */
 public class PlayerMovementListener implements Listener {
 
+    private PortalFactory portalFactory = GrechPortals.getPortalFactory();
+
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         // Prevent searching for portals on small movements.
@@ -24,10 +27,7 @@ public class PlayerMovementListener implements Listener {
         // TODO : This list search should be placed on a dedicated manager class.
         // TODO : Review possible optimizations to avoid using a stream.
         Location location = event.getTo();
-        GPortal portal = GrechPortals.getPortals().stream()
-            .filter(gPortal -> gPortal.isInside(location))
-            .findAny()
-            .orElse(null);
+        GPortal portal = portalFactory.fromLocation(location);
 
         // Exit in case none portal matches the player location.
         if (portal == null) return;

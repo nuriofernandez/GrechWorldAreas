@@ -3,16 +3,13 @@ package me.nurio.minecraft.grechportals;
 import lombok.Getter;
 import me.nurio.minecraft.grechportals.listeners.PlayerMovementListener;
 import me.nurio.minecraft.grechportals.listeners.PlayerPortalJoinListener;
-import me.nurio.minecraft.grechportals.portals.GPortal;
+import me.nurio.minecraft.grechportals.portals.PortalFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GrechPortals extends JavaPlugin {
 
-    @Getter private static List<GPortal> portals = new ArrayList<>();
+    @Getter private static PortalFactory portalFactory = new PortalFactory();
 
     @Override
     public void onEnable() {
@@ -22,7 +19,7 @@ public class GrechPortals extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        portalFactory = new PortalFactory();
     }
 
 }
