@@ -7,3 +7,4 @@ load: POSTWORLD
 author: Nurio
 website: nurio.me
 prefix: GrechPortals
+depend: [ GrechConfigPlugin ]

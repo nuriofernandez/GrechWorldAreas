@@ -24,6 +24,10 @@
             <id>destroystokyo-repo</id>
             <url>https://repo.destroystokyo.com/repository/maven-public/</url>
         </repository>
+        <repository>
+            <id>nurio-repo</id>
+            <url>https://nurio.me/repo/mvn/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -40,6 +44,13 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>${spigot.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>me.nurio</groupId>
+            <artifactId>bukkit.configuration</artifactId>
+            <version>1.0</version>
             <scope>provided</scope>
         </dependency>
 
