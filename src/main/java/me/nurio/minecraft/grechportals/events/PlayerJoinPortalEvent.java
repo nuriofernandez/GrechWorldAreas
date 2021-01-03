@@ -1,6 +1,5 @@
 package me.nurio.minecraft.grechportals.events;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +26,11 @@ public class PlayerJoinPortalEvent extends Event {
     @NotNull
     @Override
     public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    @NotNull
+    public static HandlerList getHandlerList() {
         return handlers;
     }
 
