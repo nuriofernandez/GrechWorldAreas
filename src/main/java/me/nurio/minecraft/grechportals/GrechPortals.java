@@ -1,6 +1,7 @@
 package me.nurio.minecraft.grechportals;
 
 import lombok.Getter;
+import me.nurio.minecraft.grechportals.configuration.ConfigLoader;
 import me.nurio.minecraft.grechportals.listeners.PlayerMovementListener;
 import me.nurio.minecraft.grechportals.listeners.PlayerPortalJoinListener;
 import me.nurio.minecraft.grechportals.portals.PortalFactory;
@@ -16,6 +17,11 @@ public class GrechPortals extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+
+        // Load config
+        ConfigLoader.loadAll();
+
+        // Register events
         Bukkit.getPluginManager().registerEvents(new PlayerMovementListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerPortalJoinListener(), this);
     }
