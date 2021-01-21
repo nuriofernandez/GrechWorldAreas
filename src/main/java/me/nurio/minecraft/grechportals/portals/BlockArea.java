@@ -1,6 +1,6 @@
 package me.nurio.minecraft.grechportals.portals;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.World;
 
@@ -8,10 +8,10 @@ import java.util.function.Function;
 
 public class BlockArea {
 
-    private final World world;
+    @Getter private final World world;
 
-    private final Location start;
-    private final Location end;
+    @Getter private final Location start;
+    @Getter private final Location end;
 
     public BlockArea(Location start, Location end) {
         if (start.getWorld().getUID() != end.getWorld().getUID()) {
@@ -27,8 +27,8 @@ public class BlockArea {
         if (location.getWorld().getUID() != world.getUID()) return false;
 
         var dimensions = dimensions(
-            Location::getBlockX,
             Location::getBlockY,
+            Location::getBlockX,
             Location::getBlockZ
         );
         return isInsideArea(location, dimensions);
