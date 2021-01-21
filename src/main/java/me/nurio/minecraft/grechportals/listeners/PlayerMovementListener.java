@@ -24,19 +24,25 @@ public class PlayerMovementListener implements Listener {
         if (event.getFrom().getBlock() == event.getTo().getBlock()) return;
 
         // Check if any portal matches the player location.
-        // TODO : This list search should be placed on a dedicated manager class.
         // TODO : Review possible optimizations to avoid using a stream.
         Location location = event.getTo();
-        GPortal portal = portalFactory.fromLocation(location);
+        GPortal portalTo = portalFactory.fromLocation(event.getTo());
+        GPortal portalFrom = portalFactory.fromLocation(event.getFrom());
 
         // Exit in case none portal matches the player location.
-        if (portal == null) return;
+        if (portalTo == null) return;
+
+        // Exit in case the movement was inside the same portal.
+        if (portalFrom != null && portalTo == portalFrom) return;
 
         // Launch PlayerJoinPortalEvent cause the player has joined to one.
         // TODO : Review possible concurrency improvements.
         Player player = event.getPlayer();
-        PlayerJoinPortalEvent portalJoinEvent = new PlayerJoinPortalEvent(player, location, portal);
+        PlayerJoinPortalEvent portalJoinEvent = new PlayerJoinPortalEvent(player, location, portalTo);
         Bukkit.getPluginManager().callEvent(portalJoinEvent);
+
+        // Perform portal actions to the player.
+        portalTo.performActionsTo(player);
     }
 
 }

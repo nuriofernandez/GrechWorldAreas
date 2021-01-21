@@ -2,6 +2,7 @@ package me.nurio.minecraft.grechportals.listeners;
 
 import me.nurio.minecraft.grechportals.events.PlayerJoinPortalEvent;
 import me.nurio.minecraft.grechportals.portals.GPortal;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,8 +18,7 @@ public class PlayerPortalJoinListener implements Listener {
         Player player = event.getPlayer();
         GPortal portal = event.getPortal();
 
-        // Perform portal actions to the player.
-        portal.performActionsTo(player);
+        Bukkit.broadcastMessage("You joined to " + event.getPortal().getName());
     }
 
 }
