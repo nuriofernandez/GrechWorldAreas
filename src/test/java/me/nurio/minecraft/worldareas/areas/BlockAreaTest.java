@@ -1,11 +1,13 @@
-package me.nurio.minecraft.grechportals.portals;
+package me.nurio.minecraft.worldareas.areas;
 
 import org.bukkit.Location;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+@Ignore // until mocking the world
 public class BlockAreaTest {
 
     @Test

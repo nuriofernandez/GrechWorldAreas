@@ -1,4 +1,4 @@
-package me.nurio.minecraft.grechportals.portals;
+package me.nurio.minecraft.worldareas.areas;
 
 import lombok.Getter;
 import org.bukkit.Location;

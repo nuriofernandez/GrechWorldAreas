@@ -1,9 +1,9 @@
-package me.nurio.minecraft.grechportals.events;
+package me.nurio.minecraft.worldareas.events;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import me.nurio.minecraft.grechportals.portals.GPortal;
+import me.nurio.minecraft.worldareas.areas.WorldArea;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 @RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class PlayerJoinPortalEvent extends Event {
+public class PlayerJoinAreaEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
 
@@ -21,7 +21,7 @@ public class PlayerJoinPortalEvent extends Event {
 
     private final Location location;
 
-    private final GPortal portal;
+    private final WorldArea worldArea;
 
     @NotNull
     @Override

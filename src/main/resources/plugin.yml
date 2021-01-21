@@ -1,10 +1,10 @@
-main: me.nurio.minecraft.grechportals.GrechPortals
-name: GrechPortals
+main: me.nurio.minecraft.worldareas.GrechAreas
+name: GrechAreas
 version: '1.0'
 api-version: 1.16
-description: Minecraft portals system
+description: Minecraft world areas system
 load: POSTWORLD
 author: Nurio
 website: nurio.me
-prefix: GrechPortals
+prefix: GrechAreas
 depend: [ GrechConfigPlugin ]
