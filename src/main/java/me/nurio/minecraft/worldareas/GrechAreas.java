@@ -17,14 +17,14 @@ public class GrechAreas extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        // Register area factory.
+        worldAreaFactory = new WorldAreaFactory();
+
         // Load config
         ConfigLoader.loadAll();
 
         // Register events
         Bukkit.getPluginManager().registerEvents(new PlayerMovementListener(), this);
-
-        // Register area factory.
-        worldAreaFactory = new WorldAreaFactory();
     }
 
 }
