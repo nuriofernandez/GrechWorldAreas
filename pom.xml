@@ -50,7 +50,7 @@
         <dependency>
             <groupId>me.nurio</groupId>
             <artifactId>bukkit.configuration</artifactId>
-            <version>1.0</version>
+            <version>1.2</version>
             <scope>provided</scope>
         </dependency>
 
