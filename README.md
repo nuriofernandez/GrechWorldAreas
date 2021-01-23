@@ -51,4 +51,4 @@ public void onLeave(PlayerLeaveAreaEvent event) {
 
 ## Demonstration of results:
 
-![Player joining and leaving from a world area](/documentation/images/area-movement-event.gif)
+<img src="https://github.com/xXNurioXx/GrechWorldAreas/blob/master/documentation/images/area-movement-event.gif" alt="Player joining and leaving from a world area" width="100%"/>
