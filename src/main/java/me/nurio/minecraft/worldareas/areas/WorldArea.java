@@ -2,6 +2,7 @@ package me.nurio.minecraft.worldareas.areas;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import me.nurio.minecraft.worldareas.areas.expands.WorldAreaBarrier;
 import me.nurio.minecraft.worldareas.utils.AreaUtils;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
@@ -13,7 +14,7 @@ import java.util.UUID;
  * Representation of a world area.
  */
 @AllArgsConstructor
-public class WorldArea {
+public class WorldArea implements WorldAreaBarrier {
 
     @Getter @NotNull private String name;
     @Getter @NotNull private UUID uuid;
