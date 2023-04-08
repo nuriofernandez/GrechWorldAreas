@@ -12,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
+import java.util.List;
+
 /**
  * Listens to the movements of all players in order to detect the join or leave of an area.
  */
@@ -27,24 +29,23 @@ public class PlayerMovementListener implements Listener {
         // Check if any world area matches the player location.
         // TODO : Review possible optimizations to avoid using a stream.
         Location location = event.getTo();
-        WorldArea areaTo = worldAreaFactory.fromLocation(event.getTo());
-        WorldArea areaFrom = worldAreaFactory.fromLocation(event.getFrom());
+        List<WorldArea> areaTo = worldAreaFactory.fromLocation(event.getTo());
+        List<WorldArea> areaFrom = worldAreaFactory.fromLocation(event.getFrom());
 
         // Exit in case none world area matches the player location.
-        if (areaTo == null && areaFrom == null) return;
+        if (areaTo.isEmpty() && areaFrom.isEmpty()) return;
 
-        // TODO : Support multiple areas at the same place.
-        // Exit in case the movement was inside the same world area.
-        if (areaFrom != null && areaTo == areaFrom) return;
-
-        // Send leave event in case there is no area in the next location to move.
-        if (areaTo == null) {
-            leave(event.getPlayer(), location, areaFrom);
-            return;
+        // Send leave events
+        for (WorldArea area : areaFrom) {
+            if (areaTo.contains(area)) continue;
+            leave(event.getPlayer(), location, area);
         }
 
-        // Send join event.
-        join(event.getPlayer(), location, areaTo);
+        // Send join events
+        for (WorldArea area : areaTo) {
+            if (areaFrom.contains(area)) continue;
+            join(event.getPlayer(), location, area);
+        }
     }
 
     private void join(Player player, Location location, WorldArea area) {

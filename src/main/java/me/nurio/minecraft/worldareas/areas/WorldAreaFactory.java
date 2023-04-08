@@ -4,9 +4,9 @@ import lombok.Getter;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * WorldAreaFactory manages active world areas, listing, search, etc.
@@ -28,14 +28,13 @@ public class WorldAreaFactory {
      * Obtains a world area instance from location.
      *
      * @param location Location to check if there are any world area.
-     * @return World area instance in case of any, null otherwise.
+     * @return List of WorldArea instances in case of any. Empty list otherwise.
      */
-    @Nullable
-    public WorldArea fromLocation(@NotNull Location location) {
+    @NotNull
+    public List<WorldArea> fromLocation(@NotNull Location location) {
         return areas.stream()
             .filter(area -> area.isInside(location))
-            .findAny()
-            .orElse(null);
+            .collect(Collectors.toList());
     }
 
     /**
