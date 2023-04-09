@@ -4,9 +4,11 @@ import me.nurio.bukkit.configuration.files.GrechConfig;
 import me.nurio.minecraft.worldareas.GrechAreas;
 import me.nurio.minecraft.worldareas.areas.BlockArea;
 import me.nurio.minecraft.worldareas.areas.WorldArea;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -34,15 +36,23 @@ public class ConfigLoader {
     }
 
     public static WorldArea parse(File file) {
-        System.out.println("Loading " + file.getPath());
+        Bukkit.getLogger().info("Loading world area: " + file.getPath());
 
         GrechConfig config = new GrechConfig(GrechAreas.getPlugin(), "areas" + File.separator + file.getName());
+
         String name = config.getConfig().getString("name");
         UUID uuid = UUID.fromString(config.getConfig().getString("uuid"));
-        Location start = config.getLocation("area.start");
-        Location end = config.getLocation("area.end");
 
-        return new WorldArea(name, uuid, new BlockArea(start, end));
+        List<BlockArea> blockAreas = new ArrayList<>();
+        for (String areaId : config.getConfig().getConfigurationSection("areas").getKeys(false)) {
+            Bukkit.getLogger().info("Loading BlockArea '"+name+"'@'"+areaId+"'...");
+
+            Location start = config.getLocation("areas."+areaId+".start");
+            Location end = config.getLocation("areas."+areaId+".end");
+            blockAreas.add(new BlockArea(start, end));
+        }
+
+        return new WorldArea(name, uuid, blockAreas);
     }
 
 }
