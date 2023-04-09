@@ -26,7 +26,7 @@
         </repository>
         <repository>
             <id>nurio-repo</id>
-            <url>https://nurio.me/repo/mvn/</url>
+            <url>https://maven.nurio.me/</url>
         </repository>
     </repositories>
 
