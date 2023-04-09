@@ -23,6 +23,25 @@ area:
     pitch: 0
 ```
 
+# Checking areas for location
+
+```java
+@EventHandler
+public void onBlockClick(PlayerInteractEvent event) {
+    if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+
+    Player player = event.getPlayer();
+    Location clickedBlock = event.getClickedBlock().getLocation();
+
+    List<WorldArea> areas = worldAreaFactory.fromLocation(clickedBlock);
+    String areasNames = areas.stream().map(WorldArea::getName).collect(Collectors.joining(","));
+
+    player.sendMessage(ChatColor.translateAlternateColorCodes(
+        '&', "&cYou have clicked at a block inside: &a"+areasNames
+    ));
+}
+```
+
 # Listening to an area movement event
 
 ```java
