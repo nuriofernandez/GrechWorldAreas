@@ -6,21 +6,22 @@ Spigot Minecraft server plugin that allows other plugins to work with world area
 ```yml
 name: "Redo"
 uuid: "63b4809c-b73e-4a26-a106-4e722fe9c454"
-area:
-  end:
-    w: "world"
-    x: 1
-    y: 100
-    z: 1
-    yaw: 0
-    pitch: 0
-  start:
-    w: "world"
-    x: 3
-    y: 100
-    z: 3
-    yaw: 0
-    pitch: 0
+areas:
+  1:
+    end:
+      w: "world"
+      x: 1
+      y: 100
+      z: 1
+      yaw: 0
+      pitch: 0
+    start:
+      w: "world"
+      x: 3
+      y: 100
+      z: 3
+      yaw: 0
+      pitch: 0
 ```
 
 # Checking areas for location
