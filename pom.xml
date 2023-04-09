@@ -9,10 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <spigot.version>1.16.4-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.19.4-R0.1-SNAPSHOT</spigot.version>
 
-        <maven.compiler.target>11</maven.compiler.target>
-        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
     </properties>
 
     <repositories>
@@ -21,8 +21,8 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>destroystokyo-repo</id>
-            <url>https://repo.destroystokyo.com/repository/maven-public/</url>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
         <repository>
             <id>nurio-repo</id>
@@ -33,7 +33,7 @@
     <dependencies>
         <!--Paperclip API -->
         <dependency>
-            <groupId>com.destroystokyo.paper</groupId>
+            <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
             <version>${spigot.version}</version>
             <scope>provided</scope>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
+            <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
 
@@ -112,7 +112,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <source>11</source>
+                    <source>17</source>
                 </configuration>
                 <executions>
                     <execution>
