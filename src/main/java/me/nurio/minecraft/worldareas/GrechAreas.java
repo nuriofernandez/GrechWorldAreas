@@ -1,6 +1,7 @@
 package me.nurio.minecraft.worldareas;
 
 import lombok.Getter;
+import me.nurio.minecraft.worldareas.admin.AdminModule;
 import me.nurio.minecraft.worldareas.configuration.ConfigLoader;
 import me.nurio.minecraft.worldareas.listeners.PlayerMovementListener;
 import me.nurio.minecraft.worldareas.areas.WorldAreaFactory;
@@ -25,6 +26,9 @@ public class GrechAreas extends JavaPlugin {
 
         // Register events
         Bukkit.getPluginManager().registerEvents(new PlayerMovementListener(), this);
+
+        // Load Admin module
+        AdminModule.load();
     }
 
 }

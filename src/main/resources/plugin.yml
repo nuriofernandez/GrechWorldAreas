@@ -8,3 +8,5 @@ author: Nurio
 website: nurio.me
 prefix: GrechAreas
 depend: [ GrechConfigPlugin ]
+commands:
+  grechareas:
