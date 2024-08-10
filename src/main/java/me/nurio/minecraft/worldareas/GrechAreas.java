@@ -3,6 +3,7 @@ package me.nurio.minecraft.worldareas;
 import lombok.Getter;
 import me.nurio.minecraft.worldareas.admin.AdminModule;
 import me.nurio.minecraft.worldareas.configuration.ConfigLoader;
+import me.nurio.minecraft.worldareas.configuration.ConfigSaver;
 import me.nurio.minecraft.worldareas.listeners.PlayerMovementListener;
 import me.nurio.minecraft.worldareas.areas.WorldAreaFactory;
 import org.bukkit.Bukkit;
@@ -29,6 +30,11 @@ public class GrechAreas extends JavaPlugin {
 
         // Load Admin module
         AdminModule.load();
+    }
+
+    @Override
+    public void onDisable() {
+        ConfigSaver.saveAll();
     }
 
 }
