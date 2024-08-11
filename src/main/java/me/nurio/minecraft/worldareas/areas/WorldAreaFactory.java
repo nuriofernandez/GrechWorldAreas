@@ -3,9 +3,11 @@ package me.nurio.minecraft.worldareas.areas;
 import lombok.Getter;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -35,6 +37,20 @@ public class WorldAreaFactory {
         return areas.stream()
             .filter(area -> area.isInside(location))
             .collect(Collectors.toList());
+    }
+
+    /**
+     * Obtains a world area instance from his UUID.
+     *
+     * @param uuid WorldArea UUID
+     * @return WorldArea instance or null in case there is no matching area.
+     */
+    @Nullable
+    public WorldArea fromUuid(UUID uuid){
+        return areas.stream()
+            .filter(area -> area.getUuid().equals(uuid))
+            .findAny()
+            .orElse(null);
     }
 
     /**
